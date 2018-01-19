@@ -1,0 +1,37 @@
+﻿@*to reach classes *@
+@using PartialView.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>single View Index</h2>
+
+<div class="row">
+
+    <div class="col-md-6" id="indexlist">
+
+        @foreach (var item in PerCar.Cars)
+            {
+
+            <div class="row" id = "@("CarId" + item.Id)"> <!--this relates with ajax we need Id -->
+                
+                <div class="col-md-8">
+                    @Html.Action("PartCar","Home", new { id = item.Id })<!--it relates with partial view and relates with this controller and method "PartCar"-->
+                </div>
+
+                <div class="col-md-4">
+
+                    @Ajax.ActionLink("Remove","AjaxRemoveCar",new {id=item.Id },
+                   new AjaxOptions {
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId=$"CarId"+item.Id          @*$ it works with path instead to write all path *@
+                   }, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        }
+    
+    </div>
+    <div class="col-md-6" id="mytarget">
+    </div>
+</div>

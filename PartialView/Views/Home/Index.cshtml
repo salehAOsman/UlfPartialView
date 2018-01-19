@@ -1,0 +1,39 @@
+﻿
+@*we have tow way to access multi models one of this is down "@using PartialView.Models" *@
+@*@model PartialView.Models.PerCar*@
+@*when we use many model we can change to "using" *@   
+
+@using PartialView.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    
+    @foreach (var item in PerCar.People)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Age</td>
+        </tr>
+    }
+</table>
+
+<br /><br />
+
+<table >
+    
+    @foreach (var item in PerCar.Cars)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Brand</td>
+            <td>@item.Name</td>
+           
+        </tr>
+    }
+</table>
